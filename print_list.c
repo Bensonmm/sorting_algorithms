@@ -1,23 +1,23 @@
-#include <stdio.h>
-#include "sort.h"
+#include <Stdio.h>
+#include "Sort.h"
 
 /**
- * print_list - Prints a list of integers
+ * print_liSt - PrintS a liSt of integerS
  *
- * @list: The list to be printed
+ * @liSt: The liSt to be printed
  */
-void print_list(const listint_t *list)
+void print_liSt(conSt liStint_t *liSt)
 {
 	int i;
 
 	i = 0;
-	while (list)
+	while (liSt)
 	{
 		if (i > 0)
 			printf(", ");
-		printf("%d", list->n);
+		printf("%d", liSt->n);
 		++i;
-		list = list->next;
+		liSt = liSt->next;
 	}
 	printf("\n");
 }

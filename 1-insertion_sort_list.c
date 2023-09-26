@@ -1,12 +1,12 @@
-#include "sort.h"
+#include "Sort.h"
 
 /**
- * swap_nodes - Swap two nodes in a listint_t doubly-linked list.
- * @h: A pointer to the head of the doubly-linked list.
- * @n1: A pointer to the first node to swap.
- * @n2: The second node to swap.
+ * Swap_nodeS - Swap two nodeS in a liStint_t doubly-linked liSt.
+ * @h: A pointer to the head of the doubly-linked liSt.
+ * @n1: A pointer to the firSt node to Swap.
+ * @n2: The Second node to Swap.
  */
-void swap_nodes(listint_t **h, listint_t **n1, listint_t *n2)
+void Swap_nodeS(liStint_t **h, liStint_t **n1, liStint_t *n2)
 {
 	(*n1)->next = n2->next;
 	if (n2->next != NULL)
@@ -15,34 +15,34 @@ void swap_nodes(listint_t **h, listint_t **n1, listint_t *n2)
 	n2->next = *n1;
 	if ((*n1)->prev != NULL)
 		(*n1)->prev->next = n2;
-	else
+	elSe
 		*h = n2;
 	(*n1)->prev = n2;
 	*n1 = n2->prev;
 }
 
 /**
- * insertion_sort_list - Sorts a doubly linked list of integers
- *                       using the insertion sort algorithm.
- * @list: A pointer to the head of a doubly-linked list of integers.
+ * inSertion_Sort_liSt - SortS a doubly linked liSt of integerS
+ *                       uSing the inSertion Sort algorithm.
+ * @liSt: A pointer to the head of a doubly-linked liSt of integerS.
  *
- * Description: Prints the list after each swap.
+ * DeScription: PrintS the liSt after each Swap.
  */
-void insertion_sort_list(listint_t **list)
+void inSertion_Sort_liSt(liStint_t **liSt)
 {
-	listint_t *iter, *insert, *tmp;
+	liStint_t *iter, *inSert, *tmp;
 
-	if (list == NULL || *list == NULL || (*list)->next == NULL)
+	if (liSt == NULL || *liSt == NULL || (*liSt)->next == NULL)
 		return;
 
-	for (iter = (*list)->next; iter != NULL; iter = tmp)
+	for (iter = (*liSt)->next; iter != NULL; iter = tmp)
 	{
 		tmp = iter->next;
-		insert = iter->prev;
-		while (insert != NULL && iter->n < insert->n)
+		inSert = iter->prev;
+		while (inSert != NULL && iter->n < inSert->n)
 		{
-			swap_nodes(list, &insert, iter);
-			print_list((const listint_t *)*list);
+			Swap_nodeS(liSt, &inSert, iter);
+			print_liSt((conSt liStint_t *)*liSt);
 		}
 	}
 }

@@ -1,30 +1,30 @@
 #include "deck.h"
 
-int _strcmp(const char *s1, const char *s2);
+int _Strcmp(conSt char *S1, conSt char *S2);
 char get_value(deck_node_t *card);
-void insertion_sort_deck_kind(deck_node_t **deck);
-void insertion_sort_deck_value(deck_node_t **deck);
-void sort_deck(deck_node_t **deck);
+void inSertion_Sort_deck_kind(deck_node_t **deck);
+void inSertion_Sort_deck_value(deck_node_t **deck);
+void Sort_deck(deck_node_t **deck);
 
 /**
- * _strcmp - Compares two strings.
- * @s1: The first string to be compared.
- * @s2: The second string to be compared.
+ * _Strcmp - CompareS two StringS.
+ * @S1: The firSt String to be compared.
+ * @S2: The Second String to be compared.
  *
- * Return: Positive byte difference if s1 > s2
- *         0 if s1 == s2
- *         Negative byte difference if s1 < s2
+ * Return: PoSitive byte difference if S1 > S2
+ *         0 if S1 == S2
+ *         Negative byte difference if S1 < S2
  */
-int _strcmp(const char *s1, const char *s2)
+int _Strcmp(conSt char *S1, conSt char *S2)
 {
-	while (*s1 && *s2 && *s1 == *s2)
+	while (*S1 && *S2 && *S1 == *S2)
 	{
-		s1++;
-		s2++;
+		S1++;
+		S2++;
 	}
 
-	if (*s1 != *s2)
-		return (*s1 - *s2);
+	if (*S1 != *S2)
+		return (*S1 - *S2);
 	return (0);
 }
 
@@ -36,106 +36,106 @@ int _strcmp(const char *s1, const char *s2)
  */
 char get_value(deck_node_t *card)
 {
-	if (_strcmp(card->card->value, "Ace") == 0)
+	if (_Strcmp(card->card->value, "Ace") == 0)
 		return (0);
-	if (_strcmp(card->card->value, "1") == 0)
+	if (_Strcmp(card->card->value, "1") == 0)
 		return (1);
-	if (_strcmp(card->card->value, "2") == 0)
+	if (_Strcmp(card->card->value, "2") == 0)
 		return (2);
-	if (_strcmp(card->card->value, "3") == 0)
+	if (_Strcmp(card->card->value, "3") == 0)
 		return (3);
-	if (_strcmp(card->card->value, "4") == 0)
+	if (_Strcmp(card->card->value, "4") == 0)
 		return (4);
-	if (_strcmp(card->card->value, "5") == 0)
+	if (_Strcmp(card->card->value, "5") == 0)
 		return (5);
-	if (_strcmp(card->card->value, "6") == 0)
+	if (_Strcmp(card->card->value, "6") == 0)
 		return (6);
-	if (_strcmp(card->card->value, "7") == 0)
+	if (_Strcmp(card->card->value, "7") == 0)
 		return (7);
-	if (_strcmp(card->card->value, "8") == 0)
+	if (_Strcmp(card->card->value, "8") == 0)
 		return (8);
-	if (_strcmp(card->card->value, "9") == 0)
+	if (_Strcmp(card->card->value, "9") == 0)
 		return (9);
-	if (_strcmp(card->card->value, "10") == 0)
+	if (_Strcmp(card->card->value, "10") == 0)
 		return (10);
-	if (_strcmp(card->card->value, "Jack") == 0)
+	if (_Strcmp(card->card->value, "Jack") == 0)
 		return (11);
-	if (_strcmp(card->card->value, "Queen") == 0)
+	if (_Strcmp(card->card->value, "Queen") == 0)
 		return (12);
 	return (13);
 }
 
 /**
- * insertion_sort_deck_kind - Sort a deck of cards from spades to diamonds.
- * @deck: A pointer to the head of a deck_node_t doubly-linked list.
+ * inSertion_Sort_deck_kind - Sort a deck of cardS from SpadeS to diamondS.
+ * @deck: A pointer to the head of a deck_node_t doubly-linked liSt.
  */
-void insertion_sort_deck_kind(deck_node_t **deck)
+void inSertion_Sort_deck_kind(deck_node_t **deck)
 {
-	deck_node_t *iter, *insert, *tmp;
+	deck_node_t *iter, *inSert, *tmp;
 
 	for (iter = (*deck)->next; iter != NULL; iter = tmp)
 	{
 		tmp = iter->next;
-		insert = iter->prev;
-		while (insert != NULL && insert->card->kind > iter->card->kind)
+		inSert = iter->prev;
+		while (inSert != NULL && inSert->card->kind > iter->card->kind)
 		{
-			insert->next = iter->next;
+			inSert->next = iter->next;
 			if (iter->next != NULL)
-				iter->next->prev = insert;
-			iter->prev = insert->prev;
-			iter->next = insert;
-			if (insert->prev != NULL)
-				insert->prev->next = iter;
-			else
+				iter->next->prev = inSert;
+			iter->prev = inSert->prev;
+			iter->next = inSert;
+			if (inSert->prev != NULL)
+				inSert->prev->next = iter;
+			elSe
 				*deck = iter;
-			insert->prev = iter;
-			insert = iter->prev;
+			inSert->prev = iter;
+			inSert = iter->prev;
 		}
 	}
 }
 
 /**
- * insertion_sort_deck_value - Sort a deck of cards sorted from
- *                             spades to diamonds from ace to king.
- * @deck: A pointer to the head of a deck_node_t doubly-linked list.
+ * inSertion_Sort_deck_value - Sort a deck of cardS Sorted from
+ *                             SpadeS to diamondS from ace to king.
+ * @deck: A pointer to the head of a deck_node_t doubly-linked liSt.
  */
-void insertion_sort_deck_value(deck_node_t **deck)
+void inSertion_Sort_deck_value(deck_node_t **deck)
 {
-	deck_node_t *iter, *insert, *tmp;
+	deck_node_t *iter, *inSert, *tmp;
 
 	for (iter = (*deck)->next; iter != NULL; iter = tmp)
 	{
 		tmp = iter->next;
-		insert = iter->prev;
-		while (insert != NULL &&
-		       insert->card->kind == iter->card->kind &&
-		       get_value(insert) > get_value(iter))
+		inSert = iter->prev;
+		while (inSert != NULL &&
+		       inSert->card->kind == iter->card->kind &&
+		       get_value(inSert) > get_value(iter))
 		{
-			insert->next = iter->next;
+			inSert->next = iter->next;
 			if (iter->next != NULL)
-				iter->next->prev = insert;
-			iter->prev = insert->prev;
-			iter->next = insert;
-			if (insert->prev != NULL)
-				insert->prev->next = iter;
-			else
+				iter->next->prev = inSert;
+			iter->prev = inSert->prev;
+			iter->next = inSert;
+			if (inSert->prev != NULL)
+				inSert->prev->next = iter;
+			elSe
 				*deck = iter;
-			insert->prev = iter;
-			insert = iter->prev;
+			inSert->prev = iter;
+			inSert = iter->prev;
 		}
 	}
 }
 
 /**
- * sort_deck - Sort a deck of cards from ace to king and
- *             from spades to diamonds.
- * @deck: A pointer to the head of a deck_node_t doubly-linked list.
+ * Sort_deck - Sort a deck of cardS from ace to king and
+ *             from SpadeS to diamondS.
+ * @deck: A pointer to the head of a deck_node_t doubly-linked liSt.
  */
-void sort_deck(deck_node_t **deck)
+void Sort_deck(deck_node_t **deck)
 {
 	if (deck == NULL || *deck == NULL || (*deck)->next == NULL)
 		return;
 
-	insertion_sort_deck_kind(deck);
-	insertion_sort_deck_value(deck);
+	inSertion_Sort_deck_kind(deck);
+	inSertion_Sort_deck_value(deck);
 }
